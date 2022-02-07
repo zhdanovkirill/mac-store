@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link rel="stylesheet" href="resources/css/style.css" type="text/css"/>
+    <title>Mac Outlet Example</title>
+</head>
+
+<body>
+
+<div class="wrapper">
+    <header>
+        <img class="img-logo" src="resources/icons/logo.svg" alt="Logo">
+        <img class="img-basket" src="resources/icons/cart.svg" alt="Basket">
+    </header>
+
+    <main>
+        <img class="banners" src="resources/banners/watch_banner.jpg" alt="banner">
+        <div class="filters">
+            <div class="search">
+                <img class="img-search" src="resources/icons/search.svg" alt="Search">
+                <input class="input-search" type="text" placeholder="Enter device name...">
+            </div>
+            <div class="img-box"><img class="img-filter" src="resources/icons/filter.svg" alt="Filter"></div>
+            <div class="img-box"><img class="img-settings" src="resources/icons/settings.svg" alt="Settings"></div>
+        </div>
+
+
+        <div class="content">
+            <div id="items" class="items">
+
+                <div id="card" class="card">
+                    <img class="img-like" src="resources/icons/like_empty.svg" alt="Add to favorites">
+                    <img class="card-image" alt="Device picture">
+
+                    <div class="card-body">
+                        <span class="card-title"></span>
+
+                        <div class="stock-container">
+                            <img class="img-cross display-none" src="resources/icons/close.svg" alt="In stoke">
+                            <img class="img-check display-none" src="resources/icons/check.svg" alt="In stoke">
+                            <span class="count-in-stock">0</span><span>left in stock</span>
+                        </div>
+                        <div class="price-container">
+                            Price: <span class="price"></span> $
+                        </div>
+                        <button class="btn btn-add">Add to cart</button>
+
+                    </div>
+
+                    <div class="footer-card">
+                        <img class="footer-img-like" src="resources/icons/like_filled.svg" alt="Positive reviews">
+                        <span class="positive-reviews"></span>
+                        <span class="orders"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+</div>
+<script type="module" src="./main.js"></script>
+</body>
+</html>
