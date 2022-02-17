@@ -1,6 +1,3 @@
-import {Filter} from "../helpers/filter";
-
-
 class FilterComponent{
     constructor() {
 

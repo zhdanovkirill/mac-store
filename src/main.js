@@ -1,20 +1,23 @@
 import {items as allDevice} from './app/helpers/fake-backend.js';
 import {getRandomInt} from "./app/helpers/utils.js";
 import {showDetails} from "./app/components/device-details/device-details.js";
-
+import {Filter} from "./app/helpers/filter.js";
 
 const itemsContainer = document.getElementById("items");
 const card = document.getElementById("card");
 
-function renderDevices(devices) {
-    itemsContainer.innerHTML = "";
+let filter = new Filter();
 
-    devices.map(item => {
+function renderDevices(devices) {
+    let filterObjects = filter.filtration(devices)
+
+    itemsContainer.innerHTML = "";
+    filterObjects.map(item => {
 
         let newCard = document.createElement("div");
         newCard.innerHTML = card.innerHTML;
         newCard.classList.add("card")
-        newCard.onclick = (event)=>showDetails(event,item);
+        newCard.onclick = (event) => showDetails(event, item);
 
         let cardImage = newCard.getElementsByClassName("card-image");
         cardImage[0].src = `resources/${item.imgUrl}`;
@@ -61,5 +64,16 @@ function addToCart(event, device) {
     //  console.log(allDevice.find(item => item.id===deviceId))
 }
 
+renderDevices(allDevice);
 
-renderDevices(allDevice)
+function updateAndRenderInput(el, key, prop){
+    filter.filterInputUpdate(el, key, prop)
+    renderDevices(allDevice);
+}
+
+
+function updateAndRender(el, key){
+    console.log(el,key)
+    filter.filterUpdate(el, key)
+    renderDevices(allDevice);
+}

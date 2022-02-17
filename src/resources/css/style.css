@@ -1,3 +1,5 @@
+@import './filter.css';
+
 *,
 *::before,
 *::after {
@@ -131,7 +133,7 @@ img.card-image {
 }
 
 .items {
-    width: 70vw;
+    width: calc(70vw - 300px);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;

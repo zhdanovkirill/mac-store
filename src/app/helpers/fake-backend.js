@@ -524,7 +524,7 @@ export const items = [
                 depth: '0.6', // cm
                 weight: '1.07', // Кг
             },
-            os: 'macOS',
+            os: 'watchOS',
             InTheBox: ['Case', 'Solo Loop', '1m Magnetic Charging Cable'],
             orderInfo: {
                 inStock: 90, // кол-во едениц товара в наличии
@@ -562,7 +562,7 @@ export const items = [
                 depth: '0.6', // cm
                 weight: '1.07', // Кг
             },
-            os: 'macOS',
+            os: 'watchOS',
             InTheBox: ['Case', 'Band (can be configured for either S/M or M/L length)', '1m Magnetic Charging Cable'],
             orderInfo: {
                 inStock: 79, // кол-во едениц товара в наличии
@@ -600,7 +600,7 @@ export const items = [
                 depth: '0.6', // cm
                 weight: '1.07', // Кг
             },
-            os: 'macOS',
+            os: 'watchOS',
             InTheBox: ['Case', 'Band (can be configured for either S/M or M/L length)', '1m Magnetic Charging Cable'],
             orderInfo: {
                 inStock: 47, // кол-во едениц товара в наличии
