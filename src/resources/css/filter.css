@@ -1,0 +1,85 @@
+.filter-container {
+    position: relative;
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 25px rgb(0 0 0 / 15%);
+    border-radius: 10px;
+    margin: 40px 0px auto 20px;
+}
+
+.filter-section {
+    border-bottom: 1px solid #E0E0E0;
+    width: 100%;
+}
+
+.filter-title {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-content: space-between;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    flex-direction: row;
+    border-bottom: 1px solid #E0E0E0;
+
+}
+
+.filter-title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+    margin: auto;
+}
+
+.filter-content {
+
+}
+
+.arrow {
+    width: 20px;
+    height: 20px;
+}
+
+.filter-row {
+    height: 40px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.filter-row>span>input {
+    margin-right: 15px;
+}
+
+.filter-row>span {
+    width: 40%;
+}
+.filter-row>lable {
+    width:30%
+}
+
+.filter-row>input {
+    width:65%
+}
+
+.filter-content {
+    padding: 0 15px;
+}
+
+.filter-row-col1 {
+    height: 40px;
+    margin: 10px 0;
+    width: 130px;
+    display: inline-flex;
+}

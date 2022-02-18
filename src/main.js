@@ -1,20 +1,28 @@
 import {items as allDevice} from './app/helpers/fake-backend.js';
 import {getRandomInt} from "./app/helpers/utils.js";
 import {showDetails} from "./app/components/device-details/device-details.js";
-
+import {FilterComponent} from "./app/components/filter/filterComponent.js";
+import {Filter} from "./app/helpers/filter.js";
 
 const itemsContainer = document.getElementById("items");
 const card = document.getElementById("card");
 
-function renderDevices(devices) {
-    itemsContainer.innerHTML = "";
 
-    devices.map(item => {
+let filter = new Filter();
+
+let filterComponent = new FilterComponent(filter, allDevice)
+filterComponent.filterActionHandler(renderDevices);
+
+function renderDevices() {
+    let filterObjects = filter.filtration(allDevice)
+
+    itemsContainer.innerHTML = "";
+    filterObjects.map(item => {
 
         let newCard = document.createElement("div");
         newCard.innerHTML = card.innerHTML;
         newCard.classList.add("card")
-        newCard.onclick = (event)=>showDetails(event,item);
+        newCard.onclick = (event) => showDetails(event, item);
 
         let cardImage = newCard.getElementsByClassName("card-image");
         cardImage[0].src = `resources/${item.imgUrl}`;
@@ -24,6 +32,7 @@ function renderDevices(devices) {
 
 
         const countInStock = newCard.querySelector('.count-in-stock');
+
         countInStock.textContent = ` ${item.orderInfo.inStock} `;
 
         const icon = newCard.querySelector((item.orderInfo.inStock > 0) ? '.img-check' : '.img-cross');
@@ -61,5 +70,4 @@ function addToCart(event, device) {
     //  console.log(allDevice.find(item => item.id===deviceId))
 }
 
-
-renderDevices(allDevice)
+renderDevices(allDevice);
