@@ -5,9 +5,6 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--
-        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-    -->
     <link rel="stylesheet" href="resources/css/style.css" type="text/css"/>
     <title>Mac Outlet Example</title>
 </head>
@@ -27,14 +24,14 @@
                 <img class="img-search" src="resources/icons/search.svg" alt="Search">
                 <input class="input-search" type="text" placeholder="Enter device name...">
             </div>
-            <div class="img-box"><img class="img-filter" src="resources/icons/filter.svg" alt="Filter"></div>
-            <div class="img-box"><img class="img-settings" src="resources/icons/settings.svg" alt="Settings"></div>
+            <div class="img-container img-filter-container"><img class="img-filter" src="resources/icons/filter.svg" alt="Filter"></div>
+            <div class="img-container"><img class="img-settings" src="resources/icons/settings.svg" alt="Settings"></div>
         </div>
 
 
         <div class="content">
 
-            <div class="filter-container">
+            <div id="filter" class="filter-container display-none ">
                 <div class="filter-section">
                     <div class="filter-title">
                         <div>Price</div>
@@ -43,11 +40,11 @@
                     <div class="filter-content">
                         <div class="filter-row">
                             <lable>From</lable>
-                            <input onkeypress="filter.filterUpdate(this)" type="text">
+                            <input id="price-from" data-filter-type="price" data-filter-prop="from" value="0" type="number">
                         </div>
                         <div class="filter-row">
                             <lable>To</lable>
-                            <input type="text">
+                            <input id="price-to" data-filter-type="price" data-filter-prop="to" type="number">
                         </div>
                     </div>
 
@@ -58,109 +55,65 @@
                         <div>Color</div>
                         <img class="arrow" src="./resources/icons/arrow_left.svg" alt="">
                     </div>
-                    <div class="filter-content">
-                        <div class="filter-row">
-                            <span><input type="checkbox" value="Red" onClick="updateAndRender(this)">Red</span>
-                            <span><input type="checkbox" value="Green" onClick="updateAndRender(this)">Green</span>
-                        </div>
-                        <div class="filter-row">
-                            <span><input type="checkbox" value="Black" onClick="updateAndRender(this)">Black</span>
-                            <span><input type="checkbox" value="White" onClick="updateAndRender(this)">White</span>
-                        </div>
-                        <div class="filter-row">
-                            <span><input type="checkbox" value="Blue" onclick="updateAndRender(this)">Blue</span>
-                            <span><input type="checkbox" value="Grey" onclick="updateAndRender(this)">Grey</span>
-                        </div>
-                        <div class="filter-row">
-                            <span><input type="checkbox" value="Gold" onclick="updateAndRender(this)">Gold</span>
-                            <span><input type="checkbox" value="Yellow" onclick="updateSection(this)">Yellow</span>
-                        </div>
+                    <div class="filter-content filter-color">
+
                     </div>
                 </div>
 
+                <div class="filter-section">
+                    <div class="filter-title">
+                        <div>Memory</div>
+                        <img class="arrow" src="./resources/icons/arrow_left.svg" alt="">
+                    </div>
+                    <div class="filter-content">
+                        <div class="filter-row">
+                            <span><input type="checkbox" data-filter-type="storage" value="32">32 Gb</span>
+                            <span><input type="checkbox" data-filter-type="storage" value="512">512 Gb</span>
+                        </div>
+                        <div class="filter-row">
+                            <span><input type="checkbox" data-filter-type="storage" value="64">64 Gb</span>
+                            <span><input type="checkbox" data-filter-type="storage" value="1024">1 Tb</span>
+                        </div>
+                        <div class="filter-row">
+                            <span><input type="checkbox" data-filter-type="storage" value="128">128 Gb</span>
+                            <span><input type="checkbox" data-filter-type="storage" value="2048">2 Tb</span>
+                        </div>
+                        <div class="filter-row">
+                            <span><input type="checkbox" data-filter-type="storage" value="256">256 Gb</span>
+                            <span><input type="checkbox" data-filter-type="storage" value="4096">4 Tb</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-title">
+                        <div>OS</div>
+                        <img class="arrow" src="./resources/icons/arrow_left.svg" alt="">
+                    </div>
+                    <div class="filter-content filter-os">
 
-                <!--            <div class="all_main">
-                                <div id="filter" class="filter">
-                <span class="filter_name" onkeyup="filter(this,0)">
-                    <p>Price</p>
+                    </div>
+                </div>
 
-                </span>
-                                    <span id="filter_price" class="filter_info">
-                    <span class="filter_info_left">
-                        <p>From</p>
-                        <p>To</p>
-                    </span>
-                    <span class="filter_info_right">
-                        <input type="text">
-                        <input type="text">
-                    </span>
-                </span>
-                                    <span class="filter_name" onclick="filter(this,1)">
-                    <p>Color</p>
-                    <img src="img/icons/arrow_left.svg" alt="">
-                </span>
-                                    <span id="filter_color" class="filter_info">
-                    <span class="filter_info_left"><span>
-                        <input type="checkbox" value="Red" onclick="color(this)">red</span>
-                        <span><input type="checkbox" value="Blue" onclick="color(this)">blue</span>
-                        <span><input type="checkbox" value="Black" onclick="color(this)">black</span>
-                        <span> <input type="checkbox" value="Gold" onclick="color(this)">gold</span>
-                    </span>
-                    <span class="filter_info_right">
-                        <span> <input type="checkbox" value="Green" onclick="color(this)">green</span>
-                        <span><input type="checkbox" value="White" onclick="color(this)">white</span>
-                        <span><input type="checkbox" value="Yellow" onclick="color(this)">yellow</span>
-                        <span> <input type="checkbox" value="Space Grey" onclick="color(this)">grey</span></span>
-                </span>
-                                    </span>
-                                    <span class="filter_name" onclick="filter(this,2)">
-                    <p>Memory</p>
-                    <img src="img/icons/arrow_left.svg" alt="">
-                </span>
-                                    <span id="filter_memory" class="filter_info">
-                    <span class="filter_info_left">
-                        <span> <input type="checkbox" value="32" onclick="memory(this)">32 gb</span>
-                        <span><input type="checkbox" value="64" onclick="memory(this)">64 gb</span>
-                        <span><input type="checkbox" value="128" onclick="memory(this)">128 gb</span>
-                        <span> <input type="checkbox" value="256" onclick="memory(this)">256 gb</span>
-                    </span>
-                    <span class="filter_info_right">
-                        <span> <input type="checkbox" value="512" onclick="memory(this)">512 gb</span>
-                        <span><input type="checkbox" value="1024" onclick="memory(this)">1 tb</span>
-                        <span><input type="checkbox" value="2048" onclick="memory(this)">2 tb</span>
-                        <span> <input type="checkbox" value="4096" onclick="memory(this)">4 tb</span>
-                    </span>
-                </span>
-                                    </span>
-                                    <span class="filter_name" onclick="filter(this,3)">
-                    <p>OS</p>
-                    <img src="img/icons/arrow_left.svg" alt="">
-                </span>
-                                    <span id="filter_os" class="filter_info">
-                    <span class="filter_info_left">
-                        <span> <input type="checkbox" value="IOS" onclick="os(this)">IOS</span>
-                        <span><input type="checkbox" name="" id="" value="macOS" onclick="os(this)">Mac OS</span>
-                        <span><input type="checkbox" value="tvOS" onclick="os(this)">Tv OS</span>
-                        <span> <input type="checkbox" value="watchOS" onclick="os(this)">Watch OS</span>
-                    </span>
-                </span>
-                                    <span class="filter_name" onclick="filter(this,4)">
-                    <p>Display</p>
-                    <img src="img/icons/arrow_left.svg" alt="">
-                </span>
-                                    <span id="filter_display" class="filter_info">
-                    <span class="filter_info_left">
-                        <span> <input type="checkbox" value="2-5" onclick="display(this)">2 - 5 inch</span>
-                        <span><input type="checkbox" value="5-7" onclick="display(this)">5 - 7 inch</span>
-                        <span><input type="checkbox" value="7-12" onclick="display(this)">7 - 12 inch</span>
-                        <span> <input type="checkbox" value="12-16" onclick="display(this)">12 - 16 inch</span>
-                        <span> <input type="checkbox" value="16-100" onclick="display(this)">+16 inch</span>
-                    </span>
-                </span>
-                                </div>
-                            </div>-->
+                <div class="filter-section">
+                    <div class="filter-title">
+                        <div>Display</div>
+                        <img class="arrow" src="./resources/icons/arrow_left.svg" alt="">
+                    </div>
+                    <div class="filter-content">
+                        <div class="filter-row">
+                            <span><input type="checkbox" data-filter-type="display" value="2-5">2-5</span>
+                            <span><input type="checkbox" data-filter-type="display" value="5-7">5-7</span>
+                        </div>
+                        <div class="filter-row">
+                            <span><input type="checkbox" data-filter-type="display" value="7-12">7-12</span>
+                            <span><input type="checkbox" data-filter-type="display" value="12-16">12-16</span>
+                        </div>
+                        <div class="filter-row">
+                            <span><input type="checkbox" data-filter-type="display" value="16-1000">16+</span>
+                        </div>
 
-
+                    </div>
+                </div>
             </div>
 
             <div id="items" class="items">
@@ -196,7 +149,7 @@
 
     </main>
 </div>
+
 <script nomodule type="module" src="./main.js"></script>
-<script src="./test.js"></script>
 </body>
 </html>

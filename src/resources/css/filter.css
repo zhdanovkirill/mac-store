@@ -1,7 +1,6 @@
 .filter-container {
     position: relative;
     width: 300px;
-    height: 1000px;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
@@ -10,7 +9,7 @@
     box-sizing: border-box;
     box-shadow: 0px 0px 25px rgb(0 0 0 / 15%);
     border-radius: 10px;
-    margin: 50px 10px;
+    margin: 40px 0px auto 20px;
 }
 
 .filter-section {
@@ -76,4 +75,11 @@
 
 .filter-content {
     padding: 0 15px;
+}
+
+.filter-row-col1 {
+    height: 40px;
+    margin: 10px 0;
+    width: 130px;
+    display: inline-flex;
 }

@@ -1,15 +1,20 @@
 import {items as allDevice} from './app/helpers/fake-backend.js';
 import {getRandomInt} from "./app/helpers/utils.js";
 import {showDetails} from "./app/components/device-details/device-details.js";
+import {FilterComponent} from "./app/components/filter/filterComponent.js";
 import {Filter} from "./app/helpers/filter.js";
 
 const itemsContainer = document.getElementById("items");
 const card = document.getElementById("card");
 
+
 let filter = new Filter();
 
-function renderDevices(devices) {
-    let filterObjects = filter.filtration(devices)
+let filterComponent = new FilterComponent(filter, allDevice)
+filterComponent.filterActionHandler(renderDevices);
+
+function renderDevices() {
+    let filterObjects = filter.filtration(allDevice)
 
     itemsContainer.innerHTML = "";
     filterObjects.map(item => {
@@ -27,6 +32,7 @@ function renderDevices(devices) {
 
 
         const countInStock = newCard.querySelector('.count-in-stock');
+
         countInStock.textContent = ` ${item.orderInfo.inStock} `;
 
         const icon = newCard.querySelector((item.orderInfo.inStock > 0) ? '.img-check' : '.img-cross');
@@ -65,15 +71,3 @@ function addToCart(event, device) {
 }
 
 renderDevices(allDevice);
-
-function updateAndRenderInput(el, key, prop){
-    filter.filterInputUpdate(el, key, prop)
-    renderDevices(allDevice);
-}
-
-
-function updateAndRender(el, key){
-    console.log(el,key)
-    filter.filterUpdate(el, key)
-    renderDevices(allDevice);
-}

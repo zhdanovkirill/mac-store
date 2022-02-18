@@ -1,0 +1,38 @@
+@media screen and (max-width: 1000px) {
+    .banners,
+    .content,
+    .filters {
+        width: 85% !important;
+    }
+
+    .details-container {
+        width: 83% !important;
+    }
+
+}
+
+@media screen and (max-width: 900px) {
+    .banners,
+    .content,
+    .filters {
+        width: 93% !important;
+    }
+
+    .details-container {
+        width: 91% !important;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    .banners,
+    .content,
+    .filters {
+        width: 100% !important;
+        min-width: 650px;
+    }
+
+    .details-container {
+        width: 97% !important;
+    }
+}
