@@ -137,7 +137,7 @@ img.card-image {
 .items {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     margin: 20px auto;
     padding: 10px;
     flex-wrap: wrap;
